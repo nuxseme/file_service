@@ -1,6 +1,7 @@
 {
     "require": {
         "torophp/torophp": "dev-master",
-        "masterexploder/phpthumb": ">2.0"
+        "masterexploder/phpthumb": ">2.0",
+        "monolog/monolog": "^1.22"
     }
 }

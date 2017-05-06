@@ -1,0 +1,6 @@
+[2017-05-06 07:46:42] index.WARNING: Foo bubble false [] []
+[2017-05-06 07:46:42] index.ERROR: Bar [] []
+[2017-05-06 07:46:42] index.INFO: info {"hello":"world"} []
+[2017-05-06 07:47:06] index.WARNING: Foo bubble false [] []
+[2017-05-06 07:47:06] index.ERROR: Bar [] []
+[2017-05-06 07:47:06] index.INFO: info {"hello":"world"} []

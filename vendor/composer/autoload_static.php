@@ -10,6 +10,28 @@ class ComposerStaticInitccfdc3eded7f87df766c6420a683c0f9
         '65262669306b9cfaa9401133253e43a1' => __DIR__ . '/..' . '/torophp/torophp/src/Toro.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'P' => 
         array (
@@ -27,6 +49,8 @@ class ComposerStaticInitccfdc3eded7f87df766c6420a683c0f9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitccfdc3eded7f87df766c6420a683c0f9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitccfdc3eded7f87df766c6420a683c0f9::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitccfdc3eded7f87df766c6420a683c0f9::$prefixesPsr0;
 
         }, null, ClassLoader::class);
