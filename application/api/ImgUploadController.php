@@ -20,47 +20,32 @@ class ImgUploadController extends BaseController
         if(empty($files)) {
             return fail('Not yet received the data');
         }
+        try {
+            $result = [];
+            //接收处理
+            foreach ($files as $key => $item) {
+                //上传文件名
+                $file_name = $item['file_name'];
+                //签名
+                $sign = $_POST['sign'];
+                $file_save_name = $sign.$file_name;
+                $file_path = FileService::createPath($file_save_name);
+                $file_dir = dirname($file_path);
+                if (!is_dir($file_dir)) {
+                    FileService::createDir($file_dir);
+                }
+                $img_base64 = $item['data'];
+                $img_tmp = base64_decode($img_base64);
+                file_put_contents($file_path,$img_tmp);
 
+                $result[$key]['file_name'] = $file_name;
+                $result[$key]['url']['view'] = $file_path;
+                $result[$key]['url']['download'] = $file_path;
 
-//        $img_base_dir = Yii::$app->params['img_base_dir'];
-//        try {
-//            //删除旧目录下所有文件
-//            foreach ($post as $path => $value) {
-//                $sku_dir = $img_base_dir.dirname($path);
-//                if(is_dir($sku_dir)) {
-//                    $files = scandir($sku_dir);
-//                    foreach ($files as $file) {
-//                        $file_path = $sku_dir.'/'.$file;
-//                        if ($file != '.' && $file != '..' && !is_dir($file_path)) {
-//                            unlink($file_path);
-//                        }
-//                    }
-//                }
-//            }
-//            foreach ($post as $path => $img_base64) {
-//                $path     = $img_base_dir . $path;
-//                Yii::info($path,__METHOD__);
-//                $file_dir = dirname($path);
-//                if (!file_exists($file_dir)) {
-//                    ImageService::createDir($file_dir);
-//                }
-//                $img_tmp = base64_decode($img_base64);
-//                file_put_contents($path, $img_tmp);
-//            }
-//            $result = [
-//                'version' => 1,
-//                'code' => 200,
-//                'description' => 'Success'
-//            ];
-//            return $result;
-//        }catch (\Exception $e){
-//            Yii::error($e->getMessage(),'erp-image-upload-error');
-//            $result = [
-//                'version' => 1,
-//                'code' => 400,
-//                'description' => $e->getMessage()
-//            ];
-//            return $result;
-//        }
+            }
+            return success('success',0,$result);
+        } catch (\Exception $e) {
+            return fail($e->getMessage());
+        }
     }
 }

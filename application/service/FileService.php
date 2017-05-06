@@ -23,4 +23,13 @@ class FileService
         }
         return move_uploaded_file($filename,$target);
     }
+
+    public static function createPath($file_name)
+    {
+        $root = ConfigService::getInstance()->get('root');
+        $Y=date("Y");
+        $m=date("m");
+        $d=date("d");
+        return $root.$Y.'/'.$m.'/'.$d.'/';
+    }
 }

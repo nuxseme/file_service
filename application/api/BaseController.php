@@ -7,10 +7,10 @@ class BaseController
         $user = $_POST['user'] ?? '';
         $platform = $_POST['platform'] ?? '';
         $timestamp = $_POST['timestamp'];
-        $name = $_POST['name'] ?? '';
+        $file_name = $_POST['file_name'] ?? '';
         $sign = $_POST['sign'] ?? '';
 
-        $sign_array = compact('user','platform', 'timestamp', 'name');
+        $sign_array = compact('user','platform', 'timestamp', 'file_name');
         $sign_array['token'] = ConfigService::getInstance()->get('token');
         sort($sign_array,SORT_STRING);
         $tmpStr = implode($sign_array);
