@@ -5,7 +5,7 @@ spl_autoload_register(
         if ($classes === null) {
             $classes = [
                 'HelloController'      => '/HelloController.php',
-                'FileUploadController' => '/api/FileUploadController.php',
+                'api\FileUploadController' => '/api/FileUploadController.php',
                 'ImgUploadController'  => '/api/ImgUploadController.php',
                 'ThumbService'         => '/service/ThumbService.php',
                 'FileService'          => '/service/FileService.php',
@@ -13,6 +13,7 @@ spl_autoload_register(
                 'ConfigService'          => '/service/ConfigService.php',
                 'api\BaseController'     => '/api/BaseController.php',
                 'DownloadController'     => '/api/DownloadController.php',
+                'app\FileUploadController'     => '/controller/FileUploadController.php',
             ];
         }
         if (isset($classes[$class])) {
