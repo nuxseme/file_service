@@ -1,5 +1,6 @@
 {
     "require": {
-        "torophp/torophp": "dev-master"
+        "torophp/torophp": "dev-master",
+        "masterexploder/phpthumb": ">2.0"
     }
 }

@@ -1,8 +1,12 @@
 <?php
 require(__DIR__ . '/autoload.php');
+require(__DIR__ . '/function.php');
 
 ToroHook::add("404", function() {
-    echo "Not Found ÕâÀïÐèÒªÉèÖÃÌø×ªµ½°ïÖú½çÃæ";
+    echo "Not Found";
+});
+ToroHook::add('before_request', function($routes) {
+    echo 'before_requestï¼Œå¤„ç†';
 });
 
 Toro::serve([
