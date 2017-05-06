@@ -1,6 +1,6 @@
 <?php
 
-class ImgUploadController extends BaseController
+class ImgUploadController extends api\BaseController
 {
     public function post()
     {
@@ -31,7 +31,7 @@ class ImgUploadController extends BaseController
                 $sign = $_POST['sign'];
                 $file_save_name = $sign.$file_name;
                 $file_path = FileService::createPath($file_save_name);
-                $file_dir = dirname($file_path);
+                $file_dir = dirname($root.$file_path);
                 if (!is_dir($file_dir)) {
                     FileService::createDir($file_dir);
                 }
@@ -40,8 +40,8 @@ class ImgUploadController extends BaseController
                 file_put_contents($root.$file_path,$img_tmp);
 
                 $result[$key]['file_name'] = $file_name;
-                $result[$key]['url']['view'] = '/'.$file_path;
-                $result[$key]['url']['download'] = '/'.$file_path;
+                $result[$key]['url']['view'] = DS.$file_path;
+                $result[$key]['url']['download'] = DS.$file_path.DS.'download';
 
             }
             return success('success',0,$result);

@@ -29,6 +29,22 @@ class FileService
         $Y=date("Y");
         $m=date("m");
         $d=date("d");
-        return $Y.'/'.$m.'/'.$d.'/'.$file_name;
+        return $Y.DS.$m.DS.$d.DS.$file_name;
+    }
+
+    public static function download($file)
+    {
+        if(!is_file($file)) {
+            exit('文件不存在');
+        }
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename='.basename($file));
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
     }
 }

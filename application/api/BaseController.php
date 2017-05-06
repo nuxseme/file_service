@@ -1,4 +1,5 @@
 <?php
+namespace api;
 class BaseController
 {
     public function sign()
@@ -11,7 +12,7 @@ class BaseController
         $sign = $_POST['sign'] ?? '';
 
         $sign_array = compact('user','platform', 'timestamp');
-        $sign_array['token'] = ConfigService::getInstance()->get('token');
+        $sign_array['token'] = \ConfigService::getInstance()->get('token');
         sort($sign_array,SORT_STRING);
         $tmpStr = implode($sign_array);
         return $sign == sha1($tmpStr) ? true : false;

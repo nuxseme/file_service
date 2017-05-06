@@ -28,7 +28,7 @@ class Toro
             $tokens = array(
                 ':string' => '([a-zA-Z]+)',
                 ':number' => '([0-9]+)',
-                ':alpha'  => '([a-zA-Z0-9-_]+)'
+                ':alpha'  => '([a-zA-Z0-9-_.]+)'
             );
             foreach ($routes as $pattern => $handler_name) {
                 $pattern = strtr($pattern, $tokens);
