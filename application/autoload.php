@@ -11,6 +11,7 @@ spl_autoload_register(
                 'FileService'          => '/service/FileService.php',
                 'HttpService'          => '/service/HttpService.php',
                 'ConfigService'          => '/service/ConfigService.php',
+                'BaseController'     => '/api/BaseController.php',
             ];
         }
         if (isset($classes[$class])) {

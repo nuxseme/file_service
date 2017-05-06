@@ -26,10 +26,9 @@ class FileService
 
     public static function createPath($file_name)
     {
-        $root = ConfigService::getInstance()->get('root');
         $Y=date("Y");
         $m=date("m");
         $d=date("d");
-        return $root.$Y.'/'.$m.'/'.$d.'/';
+        return $Y.'/'.$m.'/'.$d.'/'.$file_name;
     }
 }

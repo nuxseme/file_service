@@ -14,7 +14,7 @@ class ConfigService
     }
     public function get($key)
     {
-        $config = require_once(__DIR__ . '/../config/params.php');
+        $config = require(__DIR__ . '/../config/params.php');
         return isset($config[$key]) ? $config[$key] : null;
     }
 }

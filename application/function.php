@@ -12,7 +12,7 @@ function success($message = 'success',$code = 0,$beans = [])
     $object->message = trim($message);
     $object->code = intval($code);
     !empty($beans) && $object->beans = $beans;
-    return $object;
+    echo json_encode($object);
 }
 
 /**
@@ -28,5 +28,5 @@ function fail($message = 'fail',$code = 1,$beans = [])
     $object->message = trim($message);
     $object->code = intval($code);
     !empty($beans) && $object->beans = $beans;
-    return $object;
+    echo json_encode($object);
 }

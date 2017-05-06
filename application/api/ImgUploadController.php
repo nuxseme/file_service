@@ -14,14 +14,15 @@ class ImgUploadController extends BaseController
         if(!$this->sign()) {
             return fail('Signature error');
         }
+        $files = $_POST['files'] ?? [];
 
-        $files = $_POST['flies'] ?? [];
         //参数解析
         if(empty($files)) {
             return fail('Not yet received the data');
         }
         try {
             $result = [];
+            $root = ConfigService::getInstance()->get('root');
             //接收处理
             foreach ($files as $key => $item) {
                 //上传文件名
@@ -36,11 +37,11 @@ class ImgUploadController extends BaseController
                 }
                 $img_base64 = $item['data'];
                 $img_tmp = base64_decode($img_base64);
-                file_put_contents($file_path,$img_tmp);
+                file_put_contents($root.$file_path,$img_tmp);
 
                 $result[$key]['file_name'] = $file_name;
-                $result[$key]['url']['view'] = $file_path;
-                $result[$key]['url']['download'] = $file_path;
+                $result[$key]['url']['view'] = '/'.$file_path;
+                $result[$key]['url']['download'] = '/'.$file_path;
 
             }
             return success('success',0,$result);
