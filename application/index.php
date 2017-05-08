@@ -11,8 +11,9 @@ ToroHook::add("404", function() {
 
 Toro::serve([
     '/'       => 'HelloController',
-    '/file/upload' => 'api\FileUploadController',
-    '/img/upload' => 'ImgUploadController',
-    '/:number/:number/:number/:alpha/download' => 'DownloadController',
+    '/api/file/upload' => 'api\FileUploadController',
+    '/api/img/upload' => 'api\ImgUploadController',
+    '/download/:number/:number/:number/:alpha' => 'api\DownloadController',
     '/file/upload/index' => 'app\FileUploadController',
+    //'/api/file/test' => 'api\TestController',
 ]);

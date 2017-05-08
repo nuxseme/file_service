@@ -1,11 +1,11 @@
 <?php
-
-class ImgUploadController extends api\BaseController
+namespace  api;
+class ImgUploadController extends BaseController
 {
     public function post()
     {
         //请求内容格式校验
-        $contentType = HttpService::getContentType();
+        $contentType = \HttpService::getContentType();
         if($contentType != 'application/json') {
             return fail("[$contentType] invalid content type ,accept application/json");
         }
@@ -22,7 +22,7 @@ class ImgUploadController extends api\BaseController
         }
         try {
             $result = [];
-            $root = ConfigService::getInstance()->get('root');
+            $root = \ConfigService::getInstance()->get('root');
             //接收处理
             foreach ($files as $key => $item) {
                 //上传文件名
@@ -30,10 +30,10 @@ class ImgUploadController extends api\BaseController
                 //签名
                 $sign = $_POST['sign'];
                 $file_save_name = $sign.$file_name;
-                $file_path = FileService::createPath($file_save_name);
+                $file_path = \FileService::createPath($file_save_name);
                 $file_dir = dirname($root.$file_path);
                 if (!is_dir($file_dir)) {
-                    FileService::createDir($file_dir);
+                    \FileService::createDir($file_dir);
                 }
                 $img_base64 = $item['data'];
                 $img_tmp = base64_decode($img_base64);
@@ -41,7 +41,7 @@ class ImgUploadController extends api\BaseController
 
                 $result[$key]['file_name'] = $file_name;
                 $result[$key]['url']['view'] = DS.$file_path;
-                $result[$key]['url']['download'] = DS.$file_path.DS.'download';
+                $result[$key]['url']['download'] = DS.'download'.DS.$file_path;
 
             }
             return success('success',0,$result);
@@ -49,4 +49,5 @@ class ImgUploadController extends api\BaseController
             return fail($e->getMessage());
         }
     }
+
 }

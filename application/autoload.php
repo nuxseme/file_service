@@ -6,14 +6,15 @@ spl_autoload_register(
             $classes = [
                 'HelloController'      => '/HelloController.php',
                 'api\FileUploadController' => '/api/FileUploadController.php',
-                'ImgUploadController'  => '/api/ImgUploadController.php',
+                'api\ImgUploadController'  => '/api/ImgUploadController.php',
                 'ThumbService'         => '/service/ThumbService.php',
                 'FileService'          => '/service/FileService.php',
                 'HttpService'          => '/service/HttpService.php',
                 'ConfigService'          => '/service/ConfigService.php',
                 'api\BaseController'     => '/api/BaseController.php',
-                'DownloadController'     => '/api/DownloadController.php',
+                'api\DownloadController'     => '/api/DownloadController.php',
                 'app\FileUploadController'     => '/controller/FileUploadController.php',
+                //'api\TestController' => '/api/TestController.php',
             ];
         }
         if (isset($classes[$class])) {

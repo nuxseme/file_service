@@ -4,7 +4,10 @@ class BaseController
 {
     public function sign()
     {
-        $_POST = json_decode(file_get_contents('php://input'),true);
+        $contentType = \HttpService::getContentType();
+        if($contentType == 'application/json') {
+            $_POST = json_decode(file_get_contents('php://input'),true);
+        }
         //数据签名校验
         $user = $_POST['user'] ?? '';
         $platform = $_POST['platform'] ?? '';
