@@ -27,8 +27,8 @@ class FileUploadController extends BaseController
                     \FileService::createDir($file_dir);
                 }
                 rename($file['tmp_name'], $root . $file_path);
-                $result[$file_name]['url']['view']     = DS . $file_path;
-                $result[$file_name]['url']['download'] = DS . 'download' . DS . $file_path;
+                $result[$file_name]['url']['view']     = \HttpService::getUrlPrefix().DS . $file_path;
+                $result[$file_name]['url']['download'] = \HttpService::getUrlPrefix().DS . 'download' . DS . $file_path;
             }
             return success('success',0,$result);
         }catch (\Exception $e) {

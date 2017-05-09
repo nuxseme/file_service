@@ -40,8 +40,8 @@ class ImgUploadController extends BaseController
                 file_put_contents($root.$file_path,$img_tmp);
 
                 $result[$key]['file_name'] = $file_name;
-                $result[$key]['url']['view'] = DS.$file_path;
-                $result[$key]['url']['download'] = DS.'download'.DS.$file_path;
+                $result[$key]['url']['view'] = \HttpService::getUrlPrefix().DS.$file_path;
+                $result[$key]['url']['download'] = \HttpService::getUrlPrefix().DS.'download'.DS.$file_path;
 
             }
             return success('success',0,$result);

@@ -48,7 +48,7 @@ class FileUploadController
                     mkdir(dirname($target), 0775, true);
                 }
                 if (move_uploaded_file($file->tmp_name, $target)) {
-                    $file->url = DS . 'download' . DS . $file_path;
+                    $file->url = \HttpService::getUrlPrefix().DS . 'download' . DS . $file_path;
                 } else {
                     $file->error = '服务器保存文件失败';
                 }
