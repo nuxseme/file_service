@@ -6,7 +6,7 @@ class ImgUploadController extends BaseController
     {
         //请求内容格式校验
         $contentType = \HttpService::getContentType();
-        if($contentType != 'application/json') {
+        if($contentType !== 'application/json') {
             return fail("[$contentType] invalid content type ,accept application/json");
         }
 
