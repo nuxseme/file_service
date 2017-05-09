@@ -10,7 +10,7 @@ ToroHook::add("404", function() {
 });
 
 Toro::serve([
-    '/'       => 'HelloController',
+    '/'       => 'api\ListApiController',
     '/api/file/upload' => 'api\FileUploadController',
     '/api/img/upload' => 'api\ImgUploadController',
     '/download/:number/:number/:number/:alpha' => 'api\DownloadController',
